@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       test:
-        required: false
+        required: true
         default: please
         type: string
   
