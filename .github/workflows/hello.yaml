@@ -1,17 +1,16 @@
 name: hello-world
 #on: push
 on: 
-  workflow_call:
+  workflow_dispatch:
     inputs:
       test:
         required: true
-        default: please
-        type: string
+        default: 'please'
   
 
 
 jobs:
-  my-job:
+  my-job1:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
