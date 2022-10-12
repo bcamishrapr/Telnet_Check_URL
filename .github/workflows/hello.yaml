@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: echo "Hello World! ${{ inputs.test }} ${{ secrets.msg }}"
+        run: echo '${{ inputs.test }} ${{ secrets.msg }}'
