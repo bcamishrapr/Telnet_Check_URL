@@ -22,8 +22,21 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
+      uses: slackapi/slack-github-action@v1.19.0
+      with:
+          # This data can be any valid JSON from a previous step in the GitHub Action
+          payload: |
+           {
+             "repository": "${{ github.event.repository.name }}",
+             "type": "Deployment",
+             "version": "2.0.4",
+             "environment": "test"
+           }
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+    #- uses: actions/checkout@v2
+    #- name: Slack Notification
+      #uses: rtCamp/action-slack-notify@v2
+      #env:
+        #SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
