@@ -22,19 +22,31 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - name: Slack Notification
-      id: slack
-      uses: slackapi/slack-github-action@v1.23.0
-      with:
+     - name: Post to a Slack channel
+       id: slack
+       uses: slackapi/slack-github-action@v1.23.0
+       with:
+    # Slack channel id, channel name, or user id to post message.
+    # See also: https://api.slack.com/methods/chat.postMessage#channels
+    # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
+        channel-id: 'C029ELAE5EC'
+    # For posting a simple plain text message
+        slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+       env:
+         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    #- name: Slack Notification
+      #id: slack
+      #uses: slackapi/slack-github-action@v1.23.0
+      #with:
           # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-           {
-             "repository": "test",
-             "type": "Deployment"
-           }
-      env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_WEBOOK_TYPE: INCOMING_WEBHOOK
+          #payload: |
+           #{
+             #"repository": "test",
+             #"type": "Deployment"
+           #}
+      #env:
+          #SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          #SLACK_WEBOOK_TYPE: INCOMING_WEBHOOK
     #- uses: actions/checkout@v2
     #- name: Slack Notification
       #uses: rtCamp/action-slack-notify@v2
