@@ -30,7 +30,7 @@ jobs:
           payload: |
            {
              "repository": "test",
-             "type": "Deployment",
+             "type": "Deployment"
            }
       env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
