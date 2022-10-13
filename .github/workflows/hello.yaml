@@ -29,10 +29,10 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
            {
-             "repository": "${{ github.event.repository.name }}",
-             "type": 'Deployment',
-             "version": '2.0.4',
-             "environment": 'test'
+             "repository": "TELNET_CHECK_URL",
+             "type": "Deployment",
+             "version": "2.0.4",
+             "environment": "test"
            }
       env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
