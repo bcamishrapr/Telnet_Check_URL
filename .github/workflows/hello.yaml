@@ -1,17 +1,29 @@
-name: hello-world
+#name: hello-world
 #on: push
-on: 
-  workflow_dispatch:
-    inputs:
-      test:
-        required: true
-        default: 'please'
+#on: 
+  #workflow_dispatch:
+    #inputs:
+      #test:
+        #required: true
+        #default: 'please'
   
 
 
+#jobs:
+  #my-job1:
+    #runs-on: ubuntu-latest
+    #steps:
+      #- name: my-step
+        #run: echo '${{ inputs.test }} ${{ secrets.msg }}'
+on: push
+name: Slack Notification Demo
 jobs:
-  my-job1:
+  slackNotification:
+    name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo '${{ inputs.test }} ${{ secrets.msg }}'
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
