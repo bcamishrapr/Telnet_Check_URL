@@ -29,11 +29,12 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
            {
-             "key": "value",
-             "foo": "bar"
+             "repository": "test",
+             "type": "Deployment",
            }
       env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBOOK_TYPE: INCOMING_WEBHOOK
     #- uses: actions/checkout@v2
     #- name: Slack Notification
       #uses: rtCamp/action-slack-notify@v2
